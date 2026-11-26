@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idlefree-mcp"
+version = "0.0.1"
+description = "MCP tools for the IdleFree family: check and reserve PyPI names, more tools as the series grows."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Frank Zhang" }]
+keywords = ["mcp", "model-context-protocol", "pypi", "serverless", "aws", "idlefree"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+]
+dependencies = ["mcp<2"]
+
+[project.scripts]
+idlefree-mcp = "idlefree_mcp.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/cloudformer/idlefree-mcp"
+IdleFree = "https://cloudformer.github.io/"
+Repository = "https://github.com/cloudformer/idlefree-mcp"
+Changelog = "https://github.com/cloudformer/idlefree-mcp/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["idlefree_mcp"]

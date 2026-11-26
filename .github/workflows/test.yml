@@ -1,0 +1,10 @@
+name: tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    uses: cloudformer/redefine-aws-serverless-workflow/.github/workflows/reusable-test.yml@main
+    with:
+      install: "pytest"
