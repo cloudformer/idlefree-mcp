@@ -7,7 +7,7 @@ server = FastMCP("idlefree")
 
 
 @server.tool()
-def check_names(names: list[str]) -> str:
+def pypi_check(names: list[str]) -> str:
     """Check PyPI availability for each name. Read-only: nothing is published.
 
     Returns one block per name: Available / taken by someone else / already registered by you
@@ -17,11 +17,11 @@ def check_names(names: list[str]) -> str:
 
 
 @server.tool()
-def reserve_name(name: str) -> str:
-    """Reserve ONE name on PyPI by publishing an empty 0.0.1 placeholder (irreversible: PyPI
+def pypi_register(name: str) -> str:
+    """Register ONE name on PyPI by publishing an empty 0.0.1 placeholder (irreversible: PyPI
     names cannot be freed by the owner). Uses PYPI_TOKEN or ~/.pypirc, links the page to
     github.com/$IDLEFREE_OWNER/<name>. Call only after the user confirmed this exact name."""
-    return pypi.reserve([name])
+    return pypi.register([name])
 
 
 def serve():

@@ -198,12 +198,12 @@ def check(names, owner=None):
             blocks.append(block(name, "not allowed", ["a Python standard library module"], "pick another name"))
         else:
             blocks.append(block(name, "Available, no release on PyPI", [],
-                                f"idlefree-mcp reserve {name}"))
+                                f"idlefree-mcp pypi register {name}"))
     return "\n\n".join(blocks)
 
 
-def reserve(names, owner=None, author=None, log_path=None):
-    """Reserve each free name by uploading an empty 0.0.1 placeholder (irreversible: a PyPI name,
+def register(names, owner=None, author=None, log_path=None):
+    """Register each free name by uploading an empty 0.0.1 placeholder (irreversible: a PyPI name,
     once registered, should not be freed). Uses PYPI_TOKEN or ~/.pypirc. Returns text blocks."""
     c = settings(owner=owner, author=author, log=log_path)
     if not c["owner"]:
@@ -230,7 +230,7 @@ def reserve(names, owner=None, author=None, log_path=None):
         code, reason = err or (200, "")
         if code == 429:   # PyPI's limit on new projects per account: not an answer about the name
             blocks.append(block(name, "not tried: PyPI rate limit (too many new projects for now)", [],
-                                f"wait about an hour, then: idlefree-mcp reserve {name}"))
+                                f"wait about an hour, then: idlefree-mcp pypi register {name}"))
             continue
         if code == 403 and "upload to project" not in reason:   # the token, not the name
             blocks.append(block(name, "registration failed!", [reason],

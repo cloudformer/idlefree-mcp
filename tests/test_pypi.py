@@ -51,31 +51,31 @@ def test_wheel_is_a_valid_zip(tmp_path):
         assert "github.com/exampleorg/some-name" in z.read("some_name-0.0.1.dist-info/METADATA").decode()
 
 
-def test_reserve_success_and_ledger(monkeypatch, tmp_path):
+def test_register_success_and_ledger(monkeypatch, tmp_path):
     log = tmp_path / "reserved.yaml"
     monkeypatch.setenv("IDLEFREE_OWNER", "exampleorg")
     monkeypatch.setenv("PYPI_TOKEN", "pypi-faketoken")
     monkeypatch.setattr(pypi.urllib.request, "urlopen", fake_urlopen({}))
-    out = pypi.reserve(["freename123"], log_path=str(log))
+    out = pypi.register(["freename123"], log_path=str(log))
     assert "registered successfully!" in out
     saved = log.read_text()
     assert "registered:" in saved and "freename123" in saved
 
 
-def test_reserve_refused_name_goes_to_failed(monkeypatch, tmp_path):
+def test_register_refused_name_goes_to_failed(monkeypatch, tmp_path):
     log = tmp_path / "reserved.yaml"
     monkeypatch.setenv("IDLEFREE_OWNER", "exampleorg")
     monkeypatch.setenv("PYPI_TOKEN", "pypi-faketoken")
     monkeypatch.setattr(pypi.urllib.request, "urlopen",
                         fake_urlopen({}, fail_upload=(400, "The name 'freename123' isn't allowed. See https://example.com")))
-    out = pypi.reserve(["freename123"], log_path=str(log))
+    out = pypi.register(["freename123"], log_path=str(log))
     assert "registration failed!" in out and "isn't allowed" in out
     assert "freename123" in pypi.load_log(str(log))["failed"]
 
 
-def test_reserve_requires_owner(monkeypatch):
+def test_register_requires_owner(monkeypatch):
     monkeypatch.delenv("IDLEFREE_OWNER", raising=False)
-    assert "set IDLEFREE_OWNER" in pypi.reserve(["anything"])
+    assert "set IDLEFREE_OWNER" in pypi.register(["anything"])
 
 
 def test_log_roundtrip(tmp_path):
