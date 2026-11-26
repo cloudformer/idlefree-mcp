@@ -1,0 +1,59 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.cloudformer/idlefree-mcp",
+  "description": "MCP tools for the IdleFree family: check PyPI names and register one as an empty placeholder.",
+  "repository": {
+    "url": "https://github.com/cloudformer/idlefree-mcp",
+    "source": "github",
+    "id": "1472782898"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "idlefree-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp",
+          "description": "run the stdio MCP server"
+        }
+      ],
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "description": "Your GitHub user/org — a registered name's page links github.com/<owner>/<name>; also tells 'already registered by you' from 'taken'",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false,
+          "name": "IDLEFREE_OWNER"
+        },
+        {
+          "description": "Author on the placeholder (defaults to the owner)",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false,
+          "name": "IDLEFREE_AUTHOR"
+        },
+        {
+          "description": "Optional path to a reserved.yaml ledger of registers and refusals",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false,
+          "name": "IDLEFREE_RESERVED_LOG"
+        },
+        {
+          "description": "PyPI upload token (falls back to the [pypi] password in ~/.pypirc)",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true,
+          "name": "PYPI_TOKEN"
+        }
+      ]
+    }
+  ]
+}
