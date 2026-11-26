@@ -1,0 +1,2 @@
+[console_scripts]
+idlefree-mcp = idlefree_mcp.cli:main

@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+idlefree_mcp/__init__.py
+idlefree_mcp/cli.py
+idlefree_mcp/server.py
+idlefree_mcp.egg-info/PKG-INFO
+idlefree_mcp.egg-info/SOURCES.txt
+idlefree_mcp.egg-info/dependency_links.txt
+idlefree_mcp.egg-info/entry_points.txt
+idlefree_mcp.egg-info/requires.txt
+idlefree_mcp.egg-info/top_level.txt
+idlefree_mcp/tools/__init__.py
+idlefree_mcp/tools/pypi.py
+tests/test_package.py
+tests/test_pypi.py

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "idlefree-mcp"
-version = "0.0.1"
+version = "0.1.0"
 description = "MCP tools for the IdleFree family: check and reserve PyPI names, more tools as the series grows."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -29,4 +29,4 @@ Repository = "https://github.com/cloudformer/idlefree-mcp"
 Changelog = "https://github.com/cloudformer/idlefree-mcp/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["idlefree_mcp"]
+packages = ["idlefree_mcp", "idlefree_mcp.tools"]

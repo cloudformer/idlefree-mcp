@@ -17,9 +17,15 @@ the same functions:
   empty 0.0.1 placeholder with your own `~/.pypirc` token. The owner and author are yours
   (environment or flags), nothing is hard-coded. More tools join as the series grows.
 
-## Status
+## Setup
 
-`0.0.1` — name reserved, skeleton with CI (tag `vX.Y.Z` → tests → PyPI). The pypi tool lands in
-`0.1.0`.
+```sh
+export IDLEFREE_OWNER=<your GitHub user/org>     # reserve links the page to github.com/<owner>/<name>
+export IDLEFREE_AUTHOR="<name on the placeholder>"   # optional, defaults to the owner
+export IDLEFREE_RESERVED_LOG=<path/reserved.yaml>    # optional ledger of reserves and refusals
+```
+
+The upload token comes from `PYPI_TOKEN` or the `[pypi]` password in `~/.pypirc` — it never
+enters any MCP configuration.
 
 [中文说明](README.zh.md)

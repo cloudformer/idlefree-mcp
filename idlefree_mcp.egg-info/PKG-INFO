@@ -1,0 +1,52 @@
+Metadata-Version: 2.4
+Name: idlefree-mcp
+Version: 0.1.0
+Summary: MCP tools for the IdleFree family: check and reserve PyPI names, more tools as the series grows.
+Author: Frank Zhang
+License: MIT
+Project-URL: Homepage, https://github.com/cloudformer/idlefree-mcp
+Project-URL: IdleFree, https://cloudformer.github.io/
+Project-URL: Repository, https://github.com/cloudformer/idlefree-mcp
+Project-URL: Changelog, https://github.com/cloudformer/idlefree-mcp/blob/main/CHANGELOG.md
+Keywords: mcp,model-context-protocol,pypi,serverless,aws,idlefree
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: mcp<2
+Dynamic: license-file
+
+# idlefree-mcp
+
+<!-- mcp-name: io.github.cloudformer/idlefree-mcp -->
+
+MCP tools for the [IdleFree](https://cloudformer.github.io) family. One package, three doors to
+the same functions:
+
+| Caller | How |
+|---|---|
+| An AI (Claude Code, Desktop, any MCP client) | `claude mcp add pypi -- uvx idlefree-mcp mcp` |
+| A human in a terminal | `idlefree-mcp check <name>` · `idlefree-mcp reserve <name>` |
+| Other packages | `from idlefree_mcp import pypi` |
+
+## Tools
+
+- **PyPI names** — check availability (exact lookup, read-only) and reserve one by publishing an
+  empty 0.0.1 placeholder with your own `~/.pypirc` token. The owner and author are yours
+  (environment or flags), nothing is hard-coded. More tools join as the series grows.
+
+## Setup
+
+```sh
+export IDLEFREE_OWNER=<your GitHub user/org>     # reserve links the page to github.com/<owner>/<name>
+export IDLEFREE_AUTHOR="<name on the placeholder>"   # optional, defaults to the owner
+export IDLEFREE_RESERVED_LOG=<path/reserved.yaml>    # optional ledger of reserves and refusals
+```
+
+The upload token comes from `PYPI_TOKEN` or the `[pypi]` password in `~/.pypirc` — it never
+enters any MCP configuration.
+
+[中文说明](README.zh.md)
